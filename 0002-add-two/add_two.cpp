@@ -49,12 +49,34 @@ void printList(ListNode* head)
     std::cout << '\n';
 }
 
+void deleteList(ListNode* head)
+{
+    while (head != nullptr)
+    {
+        ListNode* headToDelete = head;
+        while (headToDelete->next != nullptr)
+        {
+            headToDelete = headToDelete->next;
+        }
+
+        delete headToDelete;
+        headToDelete = nullptr;
+
+        if (head != nullptr)
+        {
+            head = head->next;
+        }
+    }
+}
+
 int main()
 {
     std::vector<int> case1 { 2, 4, 3 };
     ListNode* head = numberList(case1);
 
     printList(head);
+
+    deleteList(head);
 
     return 0;
 }
